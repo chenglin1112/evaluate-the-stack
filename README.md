@@ -17,7 +17,7 @@ bash run_all.sh
 shasum -a 256 -c EXPECTED_OUTPUTS.sha256
 ```
 
-The first command takes about fifteen seconds and writes 57 output files next to the scripts. The second checks each of them against its expected hash. The only random step is the case-level bootstrap in `extra_stats.py`, which has a fixed seed (20260903, B = 4000).
+The first command takes about fifteen seconds and writes 58 output files next to the scripts. The second checks each of them against its expected hash. The only random step is the case-level bootstrap in `extra_stats.py`, which has a fixed seed (20260903, B = 4000).
 
 ## What is here
 
@@ -62,14 +62,17 @@ File names are the outputs of `run_all.sh` in `analysis/M4/panel_v2b/`, unless t
 | n_mult for every stack under both miss definitions | `results_neff.csv`, `results.txt` |
 | equivalence test with the pre-registered bounds and the negative control | `results_tost.txt`, `results_tost.csv`, `PREREG_tost.md` |
 | stratified replication, paired stack comparison | `results_stack_replication.txt`, `results_stack_replication.csv`, `results_stack_comparison.csv` |
-| increments (Table III) | `results_increment.txt`, `results_increment.csv` |
-| floors, Clopper-Pearson intervals, case-level bootstrap (Table V), per-corpus bands, Breslow-Day homogeneity, second implementation of the difficulty share | `results_extra_stats.txt`, `results_extra_stats_floors.csv`, `results_extra_stats_bootstrap.csv`, `results_extra_stats_percorpus.csv` |
+| increments (Table II) | `results_increment.txt`, `results_increment.csv` |
+| floors, Clopper-Pearson intervals, case-level bootstrap (Table IV), per-corpus bands, Breslow-Day homogeneity, second implementation of the difficulty share | `results_extra_stats.txt`, `results_extra_stats_floors.csv`, `results_extra_stats_bootstrap.csv`, `results_extra_stats_percorpus.csv` |
 | phi over phi_max | `results_phimax.csv` |
-| served-model changes on the opus tier (Section VI-D) | `results_opus_by_version.txt`, `results_opus_by_version.csv` |
-| archived against re-collected verdicts, third-vendor judge (Sections VI-A and VI-E) | `results_recollect.txt`, `results_recollect_pairs_primary.csv`, `results_recollect_pairs_strict.csv`, `layer_matrix_recollect.csv`, `results_pairs_miss_with_deepseek.csv` |
+| archived panel (Section VI-A) | the same file names in `../`; `results_collection_stats.txt`, section 1, for its agreement with the re-collected columns |
 | memory panel (Section VI-B) | `../recollect_v2b/agreement_v2a_v2b_external189.csv` |
-| batched against single-case judging (Section VI-C) | `../recollect_v2b/single_case_check_v2.csv` |
-| call counts and tokens (LLM usage section) | `../recollect_v2b/calls_v2.jsonl`, `../recollect_v2/calls_v2.jsonl`, `../recollect_v2b/extract_summary_v2.json` |
+| batched against single-case judging (Section VI-C) | `results_collection_stats.txt`, section 2, from `../recollect_v2b/single_case_check_v2.csv` |
+| served-model changes on the opus tier (Section VI-D) | `results_opus_by_version.txt`, `results_opus_by_version.csv`; `results_collection_stats.txt`, section 3, for the batch counts and the chi-square test by corpus |
+| third-vendor judge, drift and elicitation (Section VI-E) | `results_recollect.txt`, `results_recollect_pairs_primary.csv`, `results_recollect_pairs_strict.csv`, `layer_matrix_recollect.csv`, `results_pairs_miss_with_deepseek.csv` |
+| call counts and tokens (LLM usage section) | `results_collection_stats.txt`, section 5, from `../recollect_v2b/calls_v2.jsonl` and `../recollect_v2/calls_v2.jsonl` |
+
+The heading of section 3 in `results_extra_stats.txt` says Table V. It is Table IV in the arXiv version of the paper.
 
 ## What is not here
 
@@ -85,7 +88,7 @@ The internal and independent corpora and the rule layer belong to AgentTrust, ht
 
 `provenance_v2.jsonl` has one record per case and judge tier. `calls_v2.jsonl` has one record per judge call: the model requested, the model that served the call, a refusal flag, the tools used, token counts, timestamps, and the sha256 of the prompt, of the instruction header and of the output. `agent_id` and `run_id` are opaque identifiers assigned by the harness that made the calls.
 
-Free-text fields were removed from the records before release: the judges' reasons, the raw responses, and the text of refusals. Verdicts and every other field are unchanged. Of the 57 files that `run_all.sh` writes, 53 are byte for byte the files the numbers in the paper were taken from. The other four are verdict files derived from the third-vendor records, which differ only by the removed reason field.
+Free-text fields were removed from the records before release: the judges' reasons, the raw responses, and the text of refusals. Verdicts and every other field are unchanged. Of the 58 files that `run_all.sh` writes, 53 are byte for byte the files the numbers in the paper were taken from. Four are verdict files derived from the third-vendor records, which differ only by the removed reason field. The last one, `results_collection_stats.txt`, was written for this repository. It recomputes, from the files here, numbers that the paper took from scripts not included here: the agreement rates of Section VI-A, the single-case agreement rates of Section VI-C, the batch counts and chi-square tests of Section VI-D, and the call and token totals.
 
 ## Corpora and labels
 

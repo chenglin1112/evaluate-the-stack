@@ -28,7 +28,8 @@ them. See also the audits summarised in `AUDITS.md`.
    corpus (chi-square by corpus), and no mechanism claim is made. Source: the
    per-call records of the two earlier re-collections for the two events (the second is
    `recollect_v2/calls_v2.jsonl`; the first is not part of this release);
-   `panel_v2b/results_opus_by_version.txt` for the primary panel.
+   `panel_v2b/results_opus_by_version.txt` and section 3 of
+   `panel_v2b/results_collection_stats.txt` for the primary panel.
 
 5. **"Cross-vendor judge pairs recover some independence."** On the primary panel the
    archived cross-vendor pairs' excess over the same-vendor pairs halves under STRICT and is
