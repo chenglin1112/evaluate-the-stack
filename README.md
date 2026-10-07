@@ -2,7 +2,7 @@
 
 Analysis code, and the data it runs on, for the paper
 
-> Chenglin Yang. *Evaluate the Stack, Not the Layer: Do Deterministic and LLM Gates for Agent Actions Fail Independently?* arXiv preprint (identifier to be added), 2026.
+> Chenglin Yang. *Evaluate the Stack, Not the Layer: Do Deterministic and LLM Gates for Agent Actions Fail Independently?* arXiv:2610.07359, 2026.
 
 Runtime gates for agent tool calls are usually stacked: a deterministic rule layer, then one or more LLM judges. The paper measures whether the errors of those layers are independent, on 1,119 labelled actions from three corpora, with one rule layer and four judges.
 
@@ -107,7 +107,7 @@ Scripts are under the MIT Licence. Data files and documents are under CC BY 4.0.
   author = {Chenglin Yang},
   title  = {Evaluate the Stack, Not the Layer: Do Deterministic and {LLM} Gates for Agent Actions Fail Independently?},
   year   = {2026},
-  note   = {arXiv preprint (identifier to be added)}
+  note   = {arXiv:2610.07359}
 }
 ```
 
